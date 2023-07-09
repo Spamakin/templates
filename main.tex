@@ -1,0 +1,66 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{style}  % If you feel like procrastinating, mess with this file
+\usepackage{algo}   % Thank you Jeff, very cool!
+\usepackage{quiver} % https://q.uiver.app/
+
+\addbibresource{refs.bib}
+
+% Required reading
+% https://jmlr.csail.mit.edu/reviewing-papers/knuth_mathematical_writing.pdf
+%   Along with required viewing:
+%   https://www.youtube.com/watch?v=N6QEgbPWUrg&list=PLOdeqCXq1tXihn5KmyB2YTOqgxaUkcNYG
+% https://faculty.math.illinois.edu/~west/grammar.html
+
+% % % % % % % % % %
+%     Cursor      %
+%     Parking     %
+%     Lot         %
+% % % % % % % % % %
+
+\title{MATH 420 HW 69}
+\author{Anakin Dey}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\subsection*{(i)}
+
+\begin{algo}[1.3]
+    \underline{\textsc{GetRandomNumber}():}\+
+\\      \textbf{return} $4$   \Comment{chosen by fair dice roll.}
+\\      \hspace{39.00pt}\Comment{guaranteed to be random.}
+\end{algo}
+
+% nalgo has line numbers
+% ONLY the lines with \label{} are counted *and* numbered
+% also works with cleveref!
+\begin{nalgo}
+                    \underline{\textsc{GetRandomNumber}():}\+
+\\\label{line:ret}      \textbf{return} $4$   \Comment{chosen by fair dice roll.}
+\\\label{line:comment}  \hspace{39.00pt}\Comment{guaranteed to be random.}
+\end{nalgo}
+
+Random number generation from~\cite{site:xkcd}. \Cref{line:ret} and \cref{line:comment} are both referred to using cref.
+
+\quest{TODO:\@ Fully characterize the zeroes of $\zeta(s) = \sum_{n = 1}^{\infty} \frac{1}{n^{s}}$ }
+
+\section*{Problem 2}
+The English translation of \href{https://en.wikipedia.org/wiki/Lorem_ipsum#Source_text}{Lorem Ipsum}.
+\begin{ddanger}
+    ``[32] But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose.
+    To do so, I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.
+    No one rejects, dislikes or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+    Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure.
+    To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?
+    But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+    [33] On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+    These cases are perfectly simple and easy to distinguish.
+    In a free hour, when our power of choice is untrammeled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided.
+    But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted.
+    The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.''~\cite{book:lorem_ipsum}\hfill\newqed[2.107475in]{So Long, and Thanks for All the Fish}
+\end{ddanger}
+
+\printbibliography
+\end{document}
