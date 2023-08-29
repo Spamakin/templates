@@ -169,13 +169,13 @@
     notefont=\bfseries,
 ]{theorem}
 
-\declaretheorem[style=theorem, numberwithin=section, name=Definition]{defn}
-\declaretheorem[style=theorem, numberlike=defn, name=Example]{ex}
-\declaretheorem[style=theorem, numberlike=defn, name=Theorem]{thrm}
-\declaretheorem[style=theorem, numberlike=defn, name=Proposition]{prop}
-\declaretheorem[style=theorem, numberlike=defn, name=Lemma]{lem}
-\declaretheorem[style=theorem, numberlike=defn, name=Corollary]{cor}
-\declaretheorem[style=theorem, numberwithin=section, name=Exercise]{exercise}
+\declaretheorem[style=theorem, numbered=no, name=Definition]{defn}
+\declaretheorem[style=theorem, numbered=no, name=Example]{ex}
+\declaretheorem[style=theorem, numbered=no, name=Theorem]{thrm}
+\declaretheorem[style=theorem, numbered=no, name=Proposition]{prop}
+\declaretheorem[style=theorem, numbered=no, name=Lemma]{lem}
+\declaretheorem[style=theorem, numbered=no, name=Corollary]{cor}
+\declaretheorem[style=theorem, numbered=no, name=Exercise]{exercise}
 
 % TODO: Find a good way to typeset proofs without a QED
 \declaretheoremstyle[
@@ -188,7 +188,7 @@
     notefont=\bfseries,
     qed=\qedsymbol,
 ]{solution}
-\declaretheorem[style=solution, name=Proof, numbered=no]{pf}
+\declaretheorem[style=solution, numbered=no, name=Proof]{pf}
 
 % -------------------------------------------------------------------------
 %  Common abbreviations and words with accents
