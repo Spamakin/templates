@@ -1,0 +1,304 @@
+% Mirror: https://github.com/SIGma-UIUC/presentation-format
+% --------------------------------------------------------------------
+% This is a simple Beamer document that uses beamerthemesigma.sty
+% Reading the comments should help you create a presentation even if
+% you've never used Beamer before.
+% --------------------------------------------------------------------
+
+% Set our document class to Beamer
+\documentclass[aspectratio=169]{beamer}
+% \documentclass[aspectratio=169, handout]{beamer}
+% Add handout option to ignore pauses
+
+% From Jeff E
+\usepackage{algo}
+% Some more macros
+\usepackage{sigmastyle}
+
+
+% Set a title
+\title{A Sample \TeX\ SIGma Presentation}
+
+% Set a subtitle if you desire
+\subtitle{[TAOCP 5 8.9.10.11]}
+
+% Whoever worked on the presentation:
+\author{Ma, Sig}
+
+% Date looks ugly, so leave blank
+\date{}
+
+% An institute name, if you're so inclined
+% \institute{University of Illinois Urbana-Champaign}
+
+% Use the SIGma theme for this Beamer presentation
+\usetheme{sigma}
+% --------------------------------------------------------------------
+
+% Begin document
+\begin{document}
+
+% Beamer calls each slide a "frame", defined within the environment:
+% \begin{frame}
+%   <frame content here>
+% \end{frame}
+
+% This frame is just the title.
+\begin{frame}
+\titlepage
+\end{frame}
+
+% A frame with the table of contents.
+% This frame's title is "Outline".
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\begin{frame}{Updates!}
+  % Let's put some real content in this frame:
+  Weekly updates:
+  \begin{itemize}
+    \item SIGma is an excellent SIG.
+    \item I'm out of ideas for updates.
+  \end{itemize}
+\end{frame}
+
+% Start a section: *sections* (subsections, etc.) are what show up in the TOC.
+\section{Basics}
+% Section pages can be printed thus:
+\frame{\sectionpage}
+% There's a way to automate this, see:
+% https://tex.stackexchange.com/questions/178800/creating-sections-each-with-title-pages-in-beamers-slides/178803
+
+\begin{frame}{Some Text}
+    \begin{itemize}
+        \item You may want some stuff to appear in a sequence \pause
+        \item Use \textbackslash pause for this \pause
+        \item \textcolor{sigma@mainblue}{colors} \textcolor{sigma@highlightpink}{are} \textcolor{sigma@alertred}{cool}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Some Math Mode Testing}
+  % Some fun with LaTeX Math
+  $$\frac{x^2+3}{y^2+7}$$
+
+  \[
+    \mathcal L_{\mathcal T}(\vec{\lambda})
+    = \sum_{(\mathbf{x},\mathbf{s})\in \mathcal T}
+       \log P(\mathbf{s}\mid\mathbf{x}) - \sum_{i=1}^m
+       \frac{\lambda_i^2}{2\sigma^2}
+  \]
+
+  $$\int_0^8 f(x) dx$$
+\end{frame}
+
+% Use \pause to make stuff readable
+% Large walls of text scare the audience, we don't want that
+% Introducing stuff sequentially allows for questions
+\begin{frame}
+  % Alternate syntax for frame titles
+  \frametitle{There Is No Largest Prime Number}
+  % Frames can have subtitles:
+  \framesubtitle{The proof uses \textit{reductio ad absurdum}.}
+  % Some frame content:
+  \begin{thrm}
+    There is no largest prime number.
+  \end{thrm}
+  \begin{pf}
+    \begin{enumerate}
+        \item Suppose $p$ were the largest prime number \pause
+        \item Let $q$ be the product of the first $p$ primes \pause
+        \item Then $q+1$ is not divisible by any of them \pause
+        \item But $q + 1$ is greater than $1$, thus divisible by some prime number not in the first $p$ numbers. \pause
+        \item Thus, there exists a prime larger than $p$.
+    \end{enumerate}
+  \end{pf}
+\end{frame}
+
+% However, this doesn't work in math mode. It is quite annoying to figure out
+% So just copy this as reference
+% This works for \onslide<> and \item<>
+% Really good read on this: 
+%   https://www.texdev.net/2014/01/17/the-beamer-slide-overlay-concept/
+\begin{frame}{Sequential Math Frames}
+    Here is a sentence \pause
+    
+    I shall now carry out some calculations \pause
+    \begin{align*}
+        \onslide<+->{\zeta(s) &= \sum_{n = 1}^\infty \frac{1}{n^s} \\}
+        \onslide<+->{&= \prod_{p \in \text{primes}} \frac{1}{1 - p^{-s}} \\}
+        \onslide<.->{&= \frac{1}{1 - 2^-s} \cdot \frac{1}{1 - 3^-s} \cdots \\}
+        \onslide<+->{&= \frac{1}{\Gamma(s)} \int_0^\infty \frac{x^{s - 1}}{e^x - 1} ~\textrm{d}x\\}
+    \end{align*}
+\end{frame}
+
+\section{Some Template Slides}
+\frame{\sectionpage}
+
+% Similar for subsections:
+\subsection{A subsection, Wow}
+% And their pages:
+\frame{\subsectionpage}
+
+\begin{frame}{Image}
+  % This is how you'd include an image, centered.
+  \begin{center}
+    \includegraphics[width=0.25\textwidth]{images/sigma.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Side by Side}
+    \includegraphics[width=0.25\textwidth]{images/sigma.png}\hspace{0.4\textwidth}
+    \includegraphics[width=0.25\textwidth]{images/sigma.png}
+\end{frame}
+
+\begin{frame}{Demonstration of algo and nalgo env}
+    \begin{algo}
+    \underline{\textsc{GetRandomNumber}():}\+
+    \\      return $4$   \Comment{chosen by fair dice roll.}
+    \\      \hspace{42.75pt}\Comment{guaranteed to be random.}
+    \end{algo}
+    
+    % nalgo has line numbers
+    % only lines with \label{} are numbered
+    \begin{nalgo}[1.3]
+        \underline{\textsc{GetRandomNumber}():}\+
+    \\\label{}  return $4$   \Comment{chosen by fair dice roll.}
+    \\\label{}  \hspace{42.75pt}\Comment{guaranteed to be random.}
+    \end{nalgo}
+    
+    Random number generation from~\cite{site:xkcd}. 
+    \quest{
+    \textbackslash cref for line numbers does not work. 
+    If you want to refer to specific line numbers, do it manually
+    }
+    
+\end{frame}
+
+\begin{frame}{}
+\begin{minipage}[c]{0.6\textwidth}
+\begin{nalgo}
+\textul{\textbf{\textsc{AlgorithmP}}$(S[a_0, \dots, a_n])$}:
+\\\label{}  $C[1..n] \gets 0, O[1..n] \gets 1$
+\\\label{}  \textbf{while} \textsc{True}:\+
+\\\label{}      \textsc{print}$(S)$
+\\\label{}      {\color{lightgray}$j \gets n, s \gets 0$}
+\\\label{}      {\color{lightgray}\textbf{A:}~~$q \gets C[j] + O[j]$\+}
+\\\label{}          {\color{lightgray}\textbf{if} $q < 0$: goto \textbf{D}}
+\\\label{}          {\color{lightgray}\textbf{if} $q = j$: goto \textbf{B}}
+\\\label{}          {\color{lightgray}\textsc{swap}$(S, j-C[j]+s, j-q+s)$}
+\\\label{}          {\color{lightgray}$C[j] \gets q$} 
+\\\label{}          {\color{lightgray}continue\-}
+\\\label{}      {\color{lightgray}\textbf{B:}~~\textbf{if} $j=1$:\+\+}
+\\\label{}              {\color{lightgray}break\-}
+\\\label{}          {\color{lightgray}$s \gets s+1$\-}
+\\\label{}    {\color{lightgray}\textbf{D:}~~$O[j] \gets -O[j], j \gets j-1$\+}
+\\\label{}      {\color{lightgray}goto \textbf{A}}
+\end{nalgo}
+\end{minipage}
+\begin{minipage}[c]{0.35\textwidth}
+\begin{itemize}
+    \item Here is an example of annotating an algorithms \pause
+    \item We have grayed out text to highlight what we want to discuss 
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+% Of course, not everything is in pseudocode
+% You MUST have this [containsverbatim] option
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\begin{frame}[containsverbatim]{Source Code}
+    \begin{minted}
+    [
+    framesep=2mm,
+    baselinestretch=1.2,
+    bgcolor=black,
+    fontsize=\footnotesize,
+    ]
+    {python}
+    def algorithm_g(n):
+        a = [0 for _ in range(n + 1)]
+        while True:
+            curr = a[1 : n + 1][::-1]
+            yield "".join([str(i) for i in curr])
+    
+            a[0] = 1 - a[0]
+            j = 1
+            while a[j - 1] != 1:
+                j += 1
+            if j == n + 1:
+                return
+            a[j] = 1 - a[j]
+    \end{minted}
+\end{frame}
+
+
+\begin{frame}{Theorems and Lemmas}
+    \begin{lem}
+        The map $\C \times \pqty{\C \setminus \set{0}} \to \C$, $(z, w) \mapsto z / w$ is $C^{\infty}$.
+    \end{lem}
+    \begin{pf}
+        To see this, we identify $\C$ with $\R^{2}$ where $a + bi = (a, b)$.
+        Thus our map is now
+        \begin{align*}
+            \pqty{\R^{2}} \times \pqty{\R^{2} \setminus \set{(0, 0)}} &\to \R^{2} \\
+                            ((a, b), (c, d)) &\mapsto \pqty{\frac{ac + bd}{c^{2} + d^{2}}, \frac{bc - ad}{c^{2} + d^{2}}}
+        \end{align*}
+        which is well defined since at least one of $c$ or $d$ is nonzero.
+        It is simple to verify that this map is equivalent to the original one.
+        Since this new map is $C^{\infty}$ in each component, we have that it is $C^{\infty}$ overall.
+    \end{pf}
+\end{frame}
+
+\section{Conclusion}
+\frame{\sectionpage}
+
+% Asking questions is fun but we should answer some first
+\begin{frame}{}
+      \begin{center}
+    {\color{sigma@mainblue} \LARGE Questions?}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Questions!}
+    \begin{itemize}
+        \item How many zeros of $\zeta(s) = \sum\limits_{i = 1}^\infty \frac{1}{n^s} = \prod\limits_{p \text{ prime}} \frac{1}{1 - p^{-s}}$ have real part equal to $\frac{1}{2}$?
+        \item Find a closed form to the following recurrence:
+        $$
+            f(n) = \begin{cases} 
+                f\pqty{\frac{n}{2}} & n \text{ even} \\
+                f{3n + 1} & \text{otherwise}                
+            \end{cases}
+        $$
+    \end{itemize}
+\end{frame}
+
+% Quotes are fun, find some to use!
+\font\eightss=cmssq8
+\font\eightssi=cmssqi8
+\newcommand\quoteAuthorDate[3]{\begingroup
+  \baselineskip 10pt
+  \parfillskip 0pt
+  \interlinepenalty 10000 % not needed in example
+  \leftskip 0pt plus 40pc minus \parindent
+  \let\rm=\eightss
+  \let\sl=\eightssi
+  \everypar{\sl}#1\par
+  \nobreak\smallskip
+  \noindent\rm--- #2\unskip\enspace(#3)\par
+  \endgroup}
+% If someone can figure out how to horizontally center this and make the text bigger that'd be cool
+\begin{frame}
+    \begin{center}
+        \item \quoteAuthorDate{So long and thanks for all the fish!}{DOUGLAS ADAMS}{\color{sigma@mainblue} 1979}
+    \end{center}
+\end{frame}
+
+% Remove this slide if you came up with all the material yourself
+\begin{frame}{Bibliography}
+    \bibliography{refs}
+    \bibliographystyle{alpha}
+\end{frame}
+
+\end{document}

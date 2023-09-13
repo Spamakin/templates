@@ -6,6 +6,10 @@
 *.fls
 *.log
 *.out
+*.toc
+*.nav
+*.snm
 *.run.xml
 *.synctex.gz
 .auctex-auto/
+_minted*/
