@@ -1,0 +1,179 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2015 Xavier Danaux (xdanaux@gmail.com), 2020-2022 moderncv maintainers (github.com/moderncv).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+% possible options include  font size ('10pt', '11pt' and '12pt'),
+% paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape')
+% font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{classic}                            % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{blue}                               % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% adjust the page margins
+\usepackage[margin=0.75in]{geometry}
+\setlength{\footskip}{149.60005pt}                 % depending on the amount of information in the footer, you need to change this value. comment this line out and set it to the size given in the warning
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% font loading
+% for luatex and xetex, do not use inputenc and fontenc
+% see https://tex.stackexchange.com/a/496643
+\ifxetexorluatex
+  \usepackage{fontspec}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX}
+  \setmainfont{Latin Modern Roman}
+  \setsansfont{Latin Modern Sans}
+  \setmonofont{Latin Modern Mono}
+  \setmathfont{Latin Modern Math}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
+
+% document language
+\usepackage[english]{babel}
+
+% More packages
+\usepackage{hyperref}
+\usepackage{soul}
+
+% personal data
+\name{Anakin}{Dey}
+\title{Curriculum Vit\ae}                               % optional, remove / comment the line if not wanted
+\phone[mobile]{+1~(331)~250~1378}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+\email{anakind2@illinois.edu}                               % optional, remove / comment the line if not wanted
+\homepage{www.anakin-dey.com}                         % optional, remove / comment the line if not wanted
+
+% bibliography with multiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+
+\begin{document}
+\makecvtitle
+
+\section{Research Interests}
+Algebraic Combinatorics, Algebraic Geometry and Commutative Algebra, Computational Algebra, Algebraic and Fine-Grained Complexity, Algebraic Methods in Combinatorics, Combinatorial Optimization
+
+\section{Education}
+\cventry{\emph{2020--2024}}{BS in Mathematics}{University of Illinois Urbana-Champaign}{GPA: 3.91 / 4.00}{Graduation with Highest Distinction}{
+  Minor in Computer Science \newline{}
+  Deans List: Fall 2020, Fall 2021, Spring 2023
+}
+
+\section{Publications}
+
+\cventry{}{Optimizing a Model-Agnostic Measure of Graph Counterdeceptiveness via Reattachment}{}{}{}{
+  Anakin Dey, Sam Ruggerio, and Melkior Ornik \newline{}
+  \emph{2023, Submitted}, \href{https://arxiv.org/abs/2311.15093}{\color{lightblue}\ul{arXiv:2311.15093}}\newline{}
+}
+\cventry{}{Classifying Primitive Solvable Permutation Groups of Rank 5 and 6}{}{}{}{
+  Anakin Dey, Kolton O’Neal, Duc Van Khanh Tran, Camron Upshur, and Yong Yang \newline{}
+  \emph{2023, Submitted}, \href{https://doi.org/10.48550/arXiv.2308.13043}{\color{lightblue}\ul{arXiv:2308.13043}}\newline{}
+}
+\cventry{}{Post-Disaster Repair Crew Assignment Optimization Using Minimum Latency}{}{}{}{
+  Anakin Dey and Melkior Ornik \newline{}
+  IEEE International Smart Cities Conference 2022, \href{https://doi.org/10.48550/arXiv.2206.00597}{\color{lightblue}\ul{arXiv:2206.00597}}\newline{}
+}
+
+\section{Invited Talks}
+
+\cventry{\emph{2023}}{Classifying Primitive Groups using Computer Algebra and Change Making}{}{}{}{
+  UIUC Department of Mathematics Undergraduate Friday Seminars \newline{}
+}
+\cventry{\emph{2023}}{Classifying Primitive Solvable Permutation Groups of Rank 5 and 6}{}{}{}{
+  China Three Gorges University Algebra and Combinatorics Seminar \newline{}
+}
+\cventry{\emph{2022}}{Post-Disaster Repair Crew Assignment Optimization Using Minimum Latency}{}{}{}{
+  IEEE International Smart Cities Conference 2022 \newline{}
+}
+
+\section{Research Experience}
+
+\cventry{\emph{Spring 2024}}{Undergraduate Research Assistant}{\href{https://ayong.web.illinois.edu/ICLUE.html}{\color{lightblue}\ul{ICLUE}}}{Under Prof.\ Alexander Yong}{University of Illinois Urbana-Champaign}{}
+\cventry{\emph{Summer 2023}}{Undergraduate Research Assistant}{\href{https://www.math.txst.edu/research-conferences/summerreu.html}{\color{lightblue}\ul{REU in Algebra, Combinatorics, and Statistics}}}{Under Prof.\ Yong Yang}{Texas State University}{}
+\cventry{\emph{Fall 2021 -- Fall 2023}}{Undergraduate Research Assistant}{\href{https://mornik.web.illinois.edu/research/group/}{\color{lightblue}\ul{LEADCAT Lab}}}{Under Prof.\ Melkior Ornik}{University of Illinois Urbana-Champaign}{}
+
+\clearpage
+
+\section{Student Organizations}
+
+\cventry{}{Founder and President}{ACM \href{https://www.cstheory.org/}{\color{lightblue}\ul{SIGma}}}{}{}{Special Interest Group in Math and Algorithms}
+\cventry{}{Admin}{ACM \href{https://sigpwny.com/}{\color{lightblue}\ul{SIGPwny}}}{}{}{Special Interest Group in Cybersecurity}
+
+
+\section{Teaching Experience}
+
+\cventry{\emph{Spring 2021 -- Spring 2024}}{Undergraduate Course Assistant}{}{}{University of Illinois Urbana-Champaign}{
+  \setlength{\tabcolsep}{6pt}
+  \begin{itemize}
+  \setlength\itemsep{10pt}
+  \item CS 225H - Honors Data Structures\newline{}
+        \begin{tabular}{ll}
+          \emph{Spring 2024} & \hspace{56pt} Course Assistant
+        \end{tabular}
+  \item CS 374 - Introduction to Algorithms and Models of Computation\newline{}
+        \begin{tabular}{ll}
+          \emph{Spring 2022 - Fall 2022}     & \hspace{7pt} Course Assistant \\
+          \emph{Fall 2023}           & \hspace{7pt} Course Assistant \\
+        \end{tabular}
+  \item CS 173 - Discrete Structures\newline{}
+        \begin{tabular}{ll}
+          \emph{Spring 2021 - Spring 2022} & Course Assistant \\
+          \emph{Fall 2022 -- Spring 2024}           & Head Course Assistant \\
+        \end{tabular}
+  \item CS 475 - Models of Computation\newline{}
+        \begin{tabular}{ll}
+          \emph{Spring 2023} & \hspace{56pt} Course Assistant
+        \end{tabular}
+  \item CS 125 - Introduction to Computer Science\newline{}
+        \begin{tabular}{ll}
+          \emph{Spring 2021} & \hspace{56pt} Course Assistant
+        \end{tabular}
+  \end{itemize}
+}
+
+\section{Professional Experience}
+
+\cventry{\emph{Summer 2022}}{Software Engineering Intern}{CME Group}{Chicago, IL}{}{}
+
+\cventry{\emph{Summer 2021}}{Software Engineering Intern}{SiteIQ}{Lombard, IL}{}{}
+
+
+\section{Selected Coursework}
+{
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{rl}
+  Math 490 & The Symmetric Group                                                          \\
+  Math 500 & Abstract Algebra I                                                           \\
+  Math 501 & Abstract Algebra II                                                          \\
+  Math 502 & Commutative Algebra                                                          \\
+  Math 505 & Geometric Group Theory                                                       \\
+  Math 511 & Introduction to Algebraic Geometry                                           \\
+  Math 518 & Differentiable Manifolds I                                                   \\
+  Math 581 & Extremal Graph Theory                                                        \\
+  CS 473 & Algorithms                                                                     \\
+  CS 475 & Models of Computation                                                          \\
+  CS 598TMC & Algorithms from the Fine-Grained Perspective                                \\
+  CS 598MAF & Algebraic and Geometric Complexity Theory                                   \\
+  CS 598TH1 & Advances in Theoretical CS                                                  \\
+\end{tabular}
+}
+
+\end{document}
+
+
+%% end of file `template.tex'.
