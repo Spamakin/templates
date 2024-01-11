@@ -47,6 +47,9 @@
 \usepackage{hyperref}
 \usepackage{soul}
 
+% Last edited
+\usepackage{datetime2}
+
 % personal data
 \name{Anakin}{Dey}
 \title{Curriculum Vit\ae}                               % optional, remove / comment the line if not wanted
@@ -173,6 +176,10 @@ Algebraic Combinatorics, Algebraic Geometry and Commutative Algebra, Computation
   CS 598TH1 & Advances in Theoretical CS                                                  \\
 \end{tabular}
 }
+
+\vfill
+\DTMsavenow{now}
+Last Edited on \today\ at \DTMfetchhour{now}:\DTMfetchminute{now}
 
 \end{document}
 
