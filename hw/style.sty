@@ -270,19 +270,25 @@
 %  Math operators and symbols
 % -------------------------------------------------------------------------
 
-% ---- OPERATORS ----
+% ---- Misc Functions ----
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\stab}{stab}
 \DeclareMathOperator{\lcm}{lcm}
-\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\1}{\mathbb{1}}
+
+% ---- Matrices ----
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\GF}{GF}
+
+% ---- Functors ----
+\DeclareMathOperator{\Gal}{Gal}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Emb}{Emb}
 \DeclareMathOperator{\Hom}{Hom}
@@ -290,33 +296,37 @@
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Sym}{Sym}
-\DeclareMathOperator{\red}{red}
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\Mult}{Mult}
+
+% ---- Polynomials
 \DeclareMathOperator{\poly}{poly}
 \DeclareMathOperator{\mdeg}{multideg}
-\DeclareMathOperator{\vspan}{span}
 \DeclareMathOperator{\fchar}{char}
-\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\coeff}{coeff}
 \DeclareMathOperator{\lc}{\textsc{lc}}
 \DeclareMathOperator{\lm}{\textsc{lm}}
 \DeclareMathOperator{\lt}{\textsc{lt}}
+
+% ---- Analysis / Topology ----
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\inte}{int}
 \DeclareMathOperator{\bdry}{bdry}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\supp}{support}
-\DeclareMathOperator{\rel}{rel}
+
+% ---- Algebra ----
 \DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\vspan}{span}
 
 \newcommand*\argmax{\operatornamewithlimits{arg\,max}}
 \newcommand*\argmin{\operatornamewithlimits{arg\,min}}
 
 % --- Cheap displaystyle operators ---
 \newcommand*\Frac[2]{{\dfrac{#1}{#2}}}
+\newcommand*\Sfrac[2]{{\displaystyle\sfrac{#1}{#2}}}
 \newcommand*\Sum{\sum\limits}
 \newcommand*\Prod{\prod\limits}
 \newcommand*\Bigcup{\bigcup\limits}
@@ -349,9 +359,8 @@
 \newcommand*\Inf{\inf\limits}
 \newcommand*\Limsup{\limsup\limits}
 \newcommand*\Liminf{\liminf\limits}
-\newcommand*\Sfrac[2]{{\displaystyle\sfrac{#1}{#2}}}
 
-% ---- SYMBOLS ----
+% ---- Sets ----
 \newcommand*\N{\mathbb{N}}
 \newcommand*\Z{\mathbb{Z}}
 \newcommand*\Q{\mathbb{Q}}
@@ -361,8 +370,8 @@
 \newcommand*\E{\mathbb{E}}
 \newcommand*\A{\mathbb{A}}
 
+% ---- Symbols ----
 \newcommand*\e{\varepsilon}
-
 \newcommand*\true{\textsc{True}}
 \newcommand*\false{\textsc{False}}
 
@@ -508,6 +517,9 @@
  {\multicitedelim}%
  {\usebibmacro{postnote}%
 }
+
+% From https://github.com/dalcde/cam-notes/blob/master/header.tex
+\newcommand\fakeqed{\pushQED{\qed}\qedhere}
 
 % Thicc sum and prod from @mniip#9046 on Discord
 % FIXME: These don't work (yet) with non-cm fonts
