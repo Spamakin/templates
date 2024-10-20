@@ -12,4 +12,5 @@
 *.run.xml
 *.synctex.gz
 .auctex-auto/
+_minted-*/
 _minted*/
