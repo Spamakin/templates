@@ -47,6 +47,9 @@
 \usepackage{braket}
 \usepackage{xfrac}
 \usepackage{optidef}
+% Symbols from TAOCP
+% ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/manfnt/manfnt.pdf
+\usepackage{manfnt}
 
 % ---- Formatting the page ----
 \usepackage[margin = 0.75in]{geometry}
@@ -601,40 +604,3 @@
 \DeclareMathAlphabet{\mathcalb}{U}{BOONDOX-calo}{m}{n}
 \SetMathAlphabet{\mathcalb}{bold}{U}{BOONDOX-calo}{b}{n}
 \DeclareMathAlphabet{\mathbcalb}{U}{BOONDOX-calo}{b}{n}
-
-% Symbols from TAOCP
-% ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/manfnt/manfnt.pdf
-\usepackage{manfnt}
-
-% ----------------------------------------------------------------------
-%  Dangerous bend environments, stolen from TeXbook and slightly
-%  massaged.
-%
-%  Invoke as \begin{[d]danger}...\end{[d]danger}.  The enclosed text
-%  is offset just like any other list (theorem, proof, etc.)  Puts
-%  sign[s] in front of first two lines of first paragraph, which are
-%  (supposedly) never split by a page boundary.  Does NOT shrink or
-%  otherwise modify the text.
-% ----------------------------------------------------------------------
-%  The dangerous bend signs are the correct size to match two lines of
-%  Computer Modern 9pt type.  I really ought to scale them up to
-%  fit whatever size we're using, but I won't.  Unfortunately, manfnt
-%  thinks it's a 10pt font, so if we want to match 11pt Computer
-%  Modern, we have to scale manfnt to 12.222222pt!  Thanks, Don.
-%
-%  TeX is a FuXing HaX.
-% ----------------------------------------------------------------------
-
-% Single danger
-\def\danger{\begin{trivlist}\item[]\noindent%
-\begingroup\hangindent=2.5pc\hangafter=-2\clubpenalty=10000%
-\def\par{\endgraf\endgroup}%
-\hbox to 0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
-\def\enddanger{\end{trivlist}}
-
-% Double danger
-\def\ddanger{\begin{trivlist}\item[]\noindent%
-\begingroup\hangindent=4pc\hangafter=-2\clubpenalty=10000%
-\def\par{\endgraf\endgroup}%
-\hbox to 0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
-\def\endddanger{\end{trivlist}}
