@@ -534,6 +534,15 @@
  {\usebibmacro{postnote}%
 }
 
+% From https://texblog.net/latex-archive/maths/amsmath-matrix/
+% Some optional column arguments à la \array for matrices
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
 % From https://github.com/dalcde/cam-notes/blob/master/header.tex
 \newcommand\fakeqed{\pushQED{\qed}\qedhere}
 
