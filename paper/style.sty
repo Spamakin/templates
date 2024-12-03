@@ -47,6 +47,9 @@
 \usepackage{braket}
 \usepackage{xfrac}
 \usepackage{optidef}
+% Symbols from TAOCP
+% ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/manfnt/manfnt.pdf
+\usepackage{manfnt}
 
 % ---- Formatting the page ----
 \usepackage[margin = 0.75in]{geometry}
@@ -145,6 +148,7 @@
     spacebelow=\topsep,
     headindent=0pt,
     headfont=\bfseries,
+    postheadhook = {\hspace*{\parindent}},
     postheadspace=5pt plus 1pt minus 1pt,
     headpunct=\(\colon\),
     notefont=\bfseries,
@@ -164,6 +168,7 @@
     spacebelow=12pt,
     headindent=0pt,
     headfont=\bfseries,
+    postheadhook = {\hspace*{\parindent}},
     postheadspace=5pt plus 1pt minus 1pt,
     headpunct=\(\colon\),
     notefont=\bfseries,
@@ -190,7 +195,9 @@
 \newcommand*\eg{e.g.}
 \newcommand*\vitae{vit\ae{}}
 \newcommand*\apriori{a~priori}
+\newcommand*\Apriori{A~priori}
 \newcommand*\aposteriori{a~posteriori}  % I did not know this was a thing
+\newcommand*\Aposteriori{A~posteriori}
 
 % ---- PROPER NAMES (because I'm lazy) ----
 \newcommand*\Benes{Bene\v{s}}                                   % ...network
@@ -283,7 +290,7 @@
 \DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\Mult}{Mult}
 
-% ---- Polynomials
+% ---- Polynomials ----
 \DeclareMathOperator{\poly}{poly}
 \DeclareMathOperator{\mdeg}{multideg}
 \DeclareMathOperator{\fchar}{char}
@@ -291,6 +298,10 @@
 \DeclareMathOperator{\lc}{\textsc{lc}}
 \DeclareMathOperator{\lm}{\textsc{lm}}
 \DeclareMathOperator{\lt}{\textsc{lt}}
+\DeclareMathOperator{\I}{\mathbf{I}}
+\DeclareMathOperator{\V}{\mathbf{V}}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\J}{\mathbf{J}}
 
 % ---- Analysis / Topology ----
 \DeclareMathOperator{\dist}{dist}
@@ -298,11 +309,12 @@
 \DeclareMathOperator{\inte}{int}
 \DeclareMathOperator{\bdry}{bdry}
 \DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\supp}{support}
+\DeclareMathOperator{\supp}{supp}
 
 % ---- Algebra ----
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\codim}{codim}
 
 \newcommand*\argmax{\operatornamewithlimits{arg\,max}}
 \newcommand*\argmin{\operatornamewithlimits{arg\,min}}
@@ -363,6 +375,7 @@
 \newcommand*\into{\DOTSB\hookrightarrow}
 \newcommand*\onto{\DOTSB\twoheadrightarrow}
 \newcommand*\inonto{\DOTSB\lhook\joinrel\twoheadrightarrow}
+\newcommand\isoto{\stackrel{\sim}{\smash{\longrightarrow}\rule{0pt}{0.4ex}}}
 \newcommand*\from{\leftarrow}
 \newcommand*\tofrom{\leftrightarrow}
 \newcommand*\fromto{\tofrom}                                % This is mostly for my own amusement
@@ -441,11 +454,11 @@
 % TODO: cut down on code duplication
 {\catcode`\|=\active
   \xdef\Prob{\protect\expandafter\noexpand\csname Prob \endcsname}
-  \expandafter\gdef\csname Prob \endcsname#1{\probname\kern-1pt\left(%
+  \expandafter\gdef\csname Prob \endcsname#1{\probname\kern-1pt\left[%
      \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
      \,{\let\|\SetDoubleVert
      \mathcode`\|32768\let|\SetVert
-     #1}\,\right)}
+     #1}\,\right]}
 }
 
 {\catcode`\|=\active
@@ -492,6 +505,15 @@
 % You get confused often
 \newcommand\quest[1]{ {\boldmath \color{BrickRed} $\langle \langle$ \textbf{#1} $\rangle \rangle$} }
 
+% From https://texblog.net/latex-archive/maths/amsmath-matrix/
+% Some optional column arguments à la \array for matrices
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
 % From https://twitter.com/sarielhp/status/1659661458739806213
 \DeclareCiteCommand{\tcite}%
  {\usebibmacro{prenote}}%
@@ -504,48 +526,20 @@
 % From https://github.com/dalcde/cam-notes/blob/master/header.tex
 \newcommand\fakeqed{\pushQED{\qed}\qedhere}
 
-% Thicc sum and prod from @mniip#9046 on Discord
-% FIXME: These don't work (yet) with non-cm fonts
+% From https://tex.stackexchange.com/questions/573850/how-to-create-a-new-math-operator
 \makeatletter
-\newsavebox{\thicc@box}
-\newlength{\thicc@width}
-\def\thicc@crop#1{%
-    \savebox\thicc@box{#1}%
-    \pdfxform\thicc@box\setbox\thicc@box\hbox{\pdfrefxform\pdflastxform}%
-    \usebox\thicc@box%
+\DeclareRobustCommand\bigop[2][1]{%
+  \mathop{\vphantom{\sum}\mathpalette\bigop@{{#2}{#1}}}\slimits@
 }
-\def\thicc@style#1#2#3#4#5#6{%
-    \settowidth{\thicc@width}{$#1#2$}%
-    \thicc@crop{$#1#2$\kern\dimexpr\thicc@width*#3-\thicc@width\relax}%
-    \kern\dimexpr-\thicc@width*#6\relax%
-    \xleaders
-    \hbox{%
-        \thicc@crop{\kern\dimexpr\thicc@width*#5-\thicc@width*#3\relax$#1#2$\kern\dimexpr\thicc@width*#5-\thicc@width+\thicc@width*#4\relax}%
-    }\hfill%
-    \kern\dimexpr-\thicc@width*#6\relax%
-    \thicc@crop{\kern\dimexpr-\thicc@width*#4\relax$#1#2$}%
+\newcommand{\bigop@}[2]{\bigop@@#1#2}
+\newcommand{\bigop@@}[3]{%
+  \vcenter{%
+    \sbox\z@{$#1\sum$}%
+    \hbox{\resizebox{#3\dimexpr\ifx#1\displaystyle.9\fi\dimexpr\ht\z@+\dp\z@}{!}{$\m@th#2$}}%
+  }%
 }
-\def\thiccsymbol#1#2#3#4#5{%
-    \mathop{%
-        \mathchoice%
-            {\thicc@style\displaystyle{#1}{#2}{#3}{#4}{#5}}%
-            {\thicc@style\textstyle{#1}{#2}{#3}{#4}{#5}}%
-            {\thicc@style\scriptstyle{#1}{#2}{#3}{#4}{#5}}%
-            {\thicc@style\scriptscriptstyle{#1}{#2}{#3}{#4}{#5}}%
-    }\limits%
-}
-\def\thiccsum{\thiccsymbol{\sum}{1/2}{14/25}{0}{2/25}}
-\def\thiccprod{\thiccsymbol{\prod}{12/25}{13/25}{1/25}{1/25}}
 \makeatother
-
-% Wake up babe, new QED symbol dropped
-\newcommand\newqed[2][1in]{%
-    \fbox {
-        \begin{minipage}{#1}
-        #2
-        \end{minipage}
-    }
-}
+\newcommand{\bigcomma}{\DOTSB\bigop[1.0]{,}}
 
 % Lowercase mathcal \mathcalb
 % From https://sarielhp.org/blog/2022/01/11/mathcal-for-small-letters/
@@ -557,40 +551,3 @@
 \DeclareMathAlphabet{\mathcalb}{U}{BOONDOX-calo}{m}{n}
 \SetMathAlphabet{\mathcalb}{bold}{U}{BOONDOX-calo}{b}{n}
 \DeclareMathAlphabet{\mathbcalb}{U}{BOONDOX-calo}{b}{n}
-
-% Symbols from TAOCP
-% ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/manfnt/manfnt.pdf
-\usepackage{manfnt}
-
-% ----------------------------------------------------------------------
-%  Dangerous bend environments, stolen from TeXbook and slightly
-%  massaged.
-%
-%  Invoke as \begin{[d]danger}...\end{[d]danger}.  The enclosed text
-%  is offset just like any other list (theorem, proof, etc.)  Puts
-%  sign[s] in front of first two lines of first paragraph, which are
-%  (supposedly) never split by a page boundary.  Does NOT shrink or
-%  otherwise modify the text.
-% ----------------------------------------------------------------------
-%  The dangerous bend signs are the correct size to match two lines of
-%  Computer Modern 9pt type.  I really ought to scale them up to
-%  fit whatever size we're using, but I won't.  Unfortunately, manfnt
-%  thinks it's a 10pt font, so if we want to match 11pt Computer
-%  Modern, we have to scale manfnt to 12.222222pt!  Thanks, Don.
-%
-%  TeX is a FuXing HaX.
-% ----------------------------------------------------------------------
-
-% Single danger
-\def\danger{\begin{trivlist}\item[]\noindent%
-\begingroup\hangindent=2.5pc\hangafter=-2\clubpenalty=10000%
-\def\par{\endgraf\endgroup}%
-\hbox to 0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
-\def\enddanger{\end{trivlist}}
-
-% Double danger
-\def\ddanger{\begin{trivlist}\item[]\noindent%
-\begingroup\hangindent=4pc\hangafter=-2\clubpenalty=10000%
-\def\par{\endgraf\endgroup}%
-\hbox to 0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
-\def\endddanger{\end{trivlist}}
