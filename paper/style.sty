@@ -154,13 +154,14 @@
     notefont=\bfseries,
 ]{theorem}
 
-\declaretheorem[style=theorem, numbered=no, name=Definition]{defn}
-\declaretheorem[style=theorem, numbered=no, name=Example]{ex}
-\declaretheorem[style=theorem, numbered=no, name=Theorem]{thrm}
-\declaretheorem[style=theorem, numbered=no, name=Proposition]{prop}
-\declaretheorem[style=theorem, numbered=no, name=Lemma]{lem}
-\declaretheorem[style=theorem, numbered=no, name=Corollary]{cor}
-\declaretheorem[style=theorem, numbered=no, name=Exercise]{exercise}
+\declaretheorem[style=theorem, name=Definition]{defn}
+\declaretheorem[style=theorem, numberlike=defn, name=Example]{ex}
+\declaretheorem[style=theorem, numberlike=defn, name=Theorem]{thrm}
+\declaretheorem[style=theorem, numberlike=defn, name=Proposition]{prop}
+\declaretheorem[style=theorem, numberlike=defn, name=Lemma]{lem}
+\declaretheorem[style=theorem, numberlike=defn, name=Corollary]{cor}
+\declaretheorem[style=theorem, numberwithin=section, name=Exercise]{exercise}
+\renewcommand*{\theexercise}{\arabic{exercise}}
 
 % TODO: Find a good way to typeset proofs without a QED
 \declaretheoremstyle[
