@@ -482,6 +482,7 @@
 % I like \mathbb{P} for probability but go nuts, you can renew this
 \DeclareMathOperator{\probname}{\mathbb{P}}
 \DeclareMathOperator{\evname}{\mathbb{E}}
+\DeclareMathOperator{\varname}{Var}
 
 % Probability and Expectation with ability for conditioning
 % Try \Prob{x | y} versus \Prob{x} and \EV{x | y} versus \EV{x}
@@ -504,6 +505,15 @@
      \,{\let\|\SetDoubleVert
      \mathcode`\|32768\let|\SetVert
      #1}\,\right]}
+}
+
+{\catcode`\|=\active
+  \xdef\Var{\protect\expandafter\noexpand\csname Prob \endcsname}
+  \expandafter\gdef\csname Prob \endcsname#1{\varname\kern-1pt\left(%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \,{\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\,\right)}
 }
 
 % Turing Machines only take strings, we should fix that eventually
