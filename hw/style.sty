@@ -491,11 +491,11 @@
 % TODO: cut down on code duplication
 {\catcode`\|=\active
   \xdef\Prob{\protect\expandafter\noexpand\csname Prob \endcsname}
-  \expandafter\gdef\csname Prob \endcsname#1{\probname\kern-1pt\left[%
+  \expandafter\gdef\csname Prob \endcsname#1{\probname\kern-1pt\left(%
      \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
      \,{\let\|\SetDoubleVert
      \mathcode`\|32768\let|\SetVert
-     #1}\,\right]}
+     #1}\,\right)}
 }
 
 {\catcode`\|=\active
@@ -508,8 +508,8 @@
 }
 
 {\catcode`\|=\active
-  \xdef\Var{\protect\expandafter\noexpand\csname Prob \endcsname}
-  \expandafter\gdef\csname Prob \endcsname#1{\varname\kern-1pt\left(%
+  \xdef\Var{\protect\expandafter\noexpand\csname Var \endcsname}
+  \expandafter\gdef\csname Var \endcsname#1{\varname\kern-1pt\left(%
      \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
      \,{\let\|\SetDoubleVert
      \mathcode`\|32768\let|\SetVert
