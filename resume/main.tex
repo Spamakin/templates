@@ -1,0 +1,271 @@
+%-------------------------ye
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\definecolor{linkColor}{HTML}{136cba} % set desired color for URL (hex value)
+\hypersetup{
+    colorlinks=true, % Links will be coloured, the default colour is red.
+    urlcolor=linkColor, % Links to web sites are set to cyan colour
+    linkbordercolor=linkColor,
+    pdfborderstyle={/S/U/W 1}
+}
+\urlstyle{same}
+\usepackage{fontawesome}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[charter, cal=cmcal]{mathdesign}    % FIXME: get rid of these warnings
+\usepackage{sourcesanspro}
+\usepackage{inconsolata}
+\usepackage[scaled=.96, sups]{XCharter}
+\usepackage{microtype}              % Do I notice a difference? Probably not
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeEducation}[5]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{4pt}
+    \small#5 \\
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} \textit{\small#3} & #2 \\
+       & \textit{\small #4} \\
+    \end{tabular*}\vspace{-20pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & #2 \\
+    \end{tabular*}\vspace{0pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+
+
+\begin{document}
+
+
+\begin{center}
+    \textbf{\Huge \scshape Anakin Dey} \\ \vspace{1pt}
+    \small \href{tel:}{331-250-1378} $|$ 
+    \href{mailto:anakindey@gmail.com}{anakindey@gmail.com} $|$ 
+    \href{https://anakin.phd/}{anakin.phd} $|$
+    \href{https://github.com/spamakin}{github.com/spamakin} $|$ 
+    \href{https://linkedin.com/in/anakin-dey}{linkedin.com/in/anakin-dey}
+\end{center}
+
+\vspace{-20pt}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeEducation
+      {The Ohio State University}{May 2030}
+      {PhD in Mathematics}{}
+      {\vspace{-7pt}}
+    \resumeEducation
+      {University of Illinois Urbana-Champaign}{May 2024}
+      {Bachelors of Science in Mathematics, Minor in Computer Science}{GPA: 3.92/4.00}
+      {\vspace{-7pt}}
+  \resumeSubHeadingListEnd
+
+\vspace{-20pt}
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    
+    \resumeSubheading
+      {Undergraduate Research Assistant:}{Jan 2024 -- Aug 2024}
+      {Illinois Combinatorics Labs for Undergraduates}{}
+        \resumeItemListStart
+            \resumeItem{Studying algebraic and combinatorial objects relating to polynomials and complexity theory with \href{https://ayong.web.illinois.edu/}{Prof. Alexander Yong}}
+            \resumeItem{Using SageMath and Python and other computer algebra systems to study algorithmic aspects of algebraic geometry}
+        \resumeItemListEnd 
+
+    \resumeSubheading
+      {Undergraduate Research Assistant:}{Jun 2023 -- Aug 2023}
+      {Texas State University Math REU}{}
+        \resumeItemListStart
+            \resumeItem{Researching finite group classification using both mathematical and computational tools with \href{https://faculty.txst.edu/profile/1922563}{\underline{Prof. Yong Yang}}}
+            \resumeItem{Designing, proving, and implementing group theoretic algorithms using GAP, Magma, and SageMath}
+            \resumeItem{Leveraging computer algebra systems on AWS EC2 to automate and manage the search for these structures which resulted in improving the testing and computing of these classifications from taking 2 days to just 3 hours}
+        \resumeItemListEnd 
+    
+    \resumeSubheading
+      {Software Engineering Intern:}{Jun 2022 -- Aug 2022}
+      {CME Group}{}
+        \resumeItemListStart
+            \resumeItem{Refactored large code bases in order to support multiple file formats and platforms for tracing and logging of messages, which resulted in the impact of tracing on system performance being reduced by over 20\%}
+            \resumeItem{Used Jenkins, XL Release and in-house tools to benchmark the performance impact of new formats}
+            \resumeItem{Explored the use of dashboards and parsers to better process traces and give new insights on system performance}
+        \resumeItemListEnd 
+    
+    \resumeSubheading
+          {Undergraduate Research Assistant:}{Aug 2021 -- Dec 2023}
+      {\href{https://mornik.web.illinois.edu/research/group/}{\underline{Learning, Decision, Control, Autonomy Lab}}}{}
+      \resumeItemListStart
+        \resumeItem{Researching algorithms and heuristics for multi-target and multi-agent planning and movement under multiple constraints as well as deceptive and adversarial movement over graphs with \href{https://mornik.web.illinois.edu/}{\underline{Prof. Melkior Ornik}}}
+        \resumeItem{Combining concepts from heuristic approximation algorithms, Markov decision processes, probability theory, geometry, and graph theory to design new and efficient heuristics and algorithms to apply to computational difficult problems}
+        \resumeItem{Benchmarking algorithms in Python and using Matplotlib, NetworkX, and OSMnx to demonstrate informative statistics}
+        \resumeItem{Maintaining near 100\% code quality coverage with various tools such as Black, pytest, Flake8, Coverage.py, and mypy}
+    \resumeItemListEnd
+  
+    \resumeSubheading
+      {Software Engineering Intern:}{May 2021 -- Aug 2021}
+      {SiteIQ}{}
+      \resumeItemListStart
+        \resumeItem{Improved the accuracy of status reports generated over 100 times per day from multiple fueling stations using Python and JavaScript by streaming and parsing data sources such as two-wire serial and ZMODEM files}
+        \resumeItem{Identified multiple error codes and data that were not described in given documentation but present in 50\% of devices and logged them for further analysis by the team}
+        \resumeItemListEnd
+    
+    % \resumeSubheading
+    %   {Course Assistant:}{Jan 2021 -- Present}
+    %   {UIUC}{}
+    %   \resumeItemListStart
+    %     \resumeItem{Course Assistant for Introduction to Computer Science (Jan 2021 - May 2021), Discrete Structures (Aug 2021 -- Present), Introduction to Algorithms (Jan 2022 -- Dec 2022) and Models of Computation (Jan 2023 - Aug 2023)}
+    % \resumeItemListEnd 
+
+  \resumeSubHeadingListEnd
+  
+\vspace{-13pt}
+
+%-----------Papers-----------
+\section{Publications}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Optimizing a Deterministic Measure of Counterdeceptiveness via Reattachment}}{(\textit{In Preparation}, \href{https://github.com/leadcatlab/counterdeception}{GitHub})}
+          \textit{Anakin Dey, Sam Ruggerio, Melkior Ornik}
+          \vspace{-7pt}
+      \resumeProjectHeading
+          {\textbf{Classifying Primitive Solvable Permutation Groups of Rank 5 and 6}}{\href{https://www.degruyter.com/document/doi/10.1515/jgth-2023-0205/html}{JGT 2024}, \href{https://github.com/Spamakin/Solvable-Primitive-Permutation-Groups-of-Rank-5-and-6}{\underline{GitHub}})}
+          \textit{Anakin Dey, Kolton O'Neal, Duc Van Khanh Tran, Camron Upshur, Yong Yang}
+          \vspace{-7pt}
+      \resumeProjectHeading
+          {\textbf{Post-Disaster Repair Crew Assignment Optimization Using Minimum Latency} }{(\href{https://attend.ieee.org/isc2-2022/}{\underline{IEEE ISC2 2022}}, \href{https://github.com/leadcatlab/MWLP-Storm-Repair}{\underline{GitHub}})}
+          \textit{Anakin Dey, Melkior Ornik}
+          \vspace{-7pt}
+    \resumeSubHeadingListEnd
+    
+\vspace{-9pt}
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python + SageMath, GAP, Magma, Java, \CC, JavaScript, TypeScript, Agda, C} \\
+     \textbf{Tools}{: Bash, Git, JUnit, mypy, pytest, Matplotlib, NetworkX, Numpy, Z3, Gurobi, GDB, Catch2, Pandas, Jira, Grafana} \\
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+ 
+\vspace{-13pt}
+
+%-----------EXTRA CURRICULARS-----------
+\section{Extracurriculars}
+    \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{Founder \& President: SIGma} $|$ Special Interest Group for Math and Algorithms $|$ \href{https://www.cstheory.org/}{\underline{cstheory.org}}}{}
+      {}{}
+          \resumeItemListStart
+              \resumeItem{Founded club to teach theoretical computer science and mathematics to over 50 students of various backgrounds}
+              \resumeItem{Creating weekly meetings covering ideas such as efficient \href{https://www.cstheory.org/meetings/sp23/binary/slides.pdf}{\underline{\smash{binary generation}}}, \href{https://www.cstheory.org/meetings/fa22/decidability_and_recognizability/slides.pdf}{\underline{\smash{decidability}}} and Turing Machines, \href{https://www.cstheory.org/meetings/fa22/CFGs_and_PDAs/slides.pdf}{\underline{state machines}}, and other \href{https://www.cstheory.org/meetings/sp23/langford/slides.pdf}{\underline{mathematical}} concepts in a comprehensive and intuitive manner}
+          \resumeItemListEnd
+    \resumeSubheading
+      {\textbf{Admin: SIGPwny} $|$ Special Interest Group for Security $|$ \href{https://sigpwny.com/}{\underline{sigpwny.com}}}{}
+      {}{}
+          \resumeItemListStart
+              \resumeItem{Hosted \href{https://sigpwny.com/presentation-content/FA2022/Week_07_Crypto_I.pdf}{\underline{\smash{multiple}}}\, \href{https://sigpwny.com/presentation-content/FA2022/Week_07_Crypto_II.pdf}{\underline{\smash{meetings}}} on cryptographical concepts including  block ciphers, RSA, Diffie-Hellman, and elliptic-curve cryptography, complete with multiple challenges, to over 70 people per meeting}
+            \resumeItem{Created cryptography challenges and reverse engineering for UIUCTF \href{https://2021.uiuc.tf/}{\underline{2021}} / \href{https://2022.uiuc.tf/}{\underline{2022}} / \href{https://2023.uiuc.tf/}{\underline{2023}} for over 2000 participants and Fall CTF \href{https://sigpwny.com/events/fallctf/2021/}{\underline{2021}} / \href{https://sigpwny.com/events/fallctf/2022/}{\underline{2022}} / \href{https://sigpwny.com/events/fallctf/2023/}{\underline{2023}} for over 300 participants}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\end{document}
