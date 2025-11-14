@@ -2,5 +2,5 @@ $pdf_mode = 1;
 $bibtex_use = 2;
 $ENV{'TZ'} = 'America/New_York';
 $clean_ext = "run.xml synctex.gz _minted-%R/* _minted-%R";
-$pdf_previewer = 'okular';
+$pdf_previewer = 'open -a Preview';
 set_tex_cmds( '--shell-escape' );
