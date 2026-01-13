@@ -16,3 +16,4 @@
 .auctex-auto/
 _minted-*/
 _minted*/
+.DS_store
