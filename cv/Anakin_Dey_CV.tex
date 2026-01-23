@@ -48,6 +48,12 @@
 \usepackage{soul}
 
 % Last edited
+\usepackage{footmisc} % Footnote support
+% https://tex.stackexchange.com/questions/170511/footnotes-without-numbering/170512
+\newcommand\blankfootnote[1]{%
+  \let\thefootnote\relax\footnotetext{#1}%
+  \let\thefootnote\svthefootnote%
+}
 \usepackage{datetime2}
 
 % personal data
@@ -68,11 +74,19 @@
 \begin{document}
 \makecvtitle
 
+\blankfootnote{
+\DTMsavenow{now}
+\emph{
+  Last Edited on \today\ at \DTMfetchhour{now}:\DTMfetchminute{now}. See \href{https://www.anakin.phd/cv}{\color{lightblue}\ul{anakin.phd/cv}} for the most up-to-date version.
+}
+}
+
 \section{Research Interests}
 Algebraic Combinatorics, Algebraic and Geometric Complexity Theory, Computational Algebra
 
 \section{Education}
 \cventry{\emph{Fall 2024 --- Spring 2030}}{PhD Mathematics}{The Ohio State University}{}{}{
+  Advised by Dave Anderson and Zeyu Guo \newline{}
 }
 \cventry{\emph{Fall 2020 --- Spring 2024}}{BSLAS Mathematics}{University of Illinois Urbana-Champaign}{}{}{
   Minor in Computer Science \newline{}
@@ -141,10 +155,10 @@ Algebraic Combinatorics, Algebraic and Geometric Complexity Theory, Computationa
 \cventry{\emph{Fall 2025 -- Current}}{Graduate Teaching Associate}{}{}{The Ohio State University}{
   \setlength{\tabcolsep}{24pt}
   \begin{itemize}
-    % \item Math 1151 --- Calculus I \newline{}
-    %       (\emph{Spring 2026, Grader})
+    \item Math 3345 --- Foundations of Higher Mathematics \newline{}
+          (\emph{Spring 2026, Grader})
     \item Math 1151 --- Calculus I \newline{}
-          (\emph{Fall 2025})
+          (\emph{Fall 2025}, TA)
   \setlength\itemsep{10pt}
   \end{itemize}
 }
@@ -174,12 +188,6 @@ Algebraic Combinatorics, Algebraic and Geometric Complexity Theory, Computationa
 \cventry{\emph{Summer 2022}}{Software Engineering Intern}{CME Group}{}{}{}
 
 \cventry{\emph{Summer 2021}}{Software Engineering Intern}{SiteIQ}{}{}{}
-
-\vfill
-\DTMsavenow{now}
-\emph{
-  Last Edited on \today\ at \DTMfetchhour{now}:\DTMfetchminute{now}. See \href{https://www.anakin.phd/cv}{\color{lightblue}\ul{anakin.phd/cv}} for the most up-to-date version.
-}
 
 \end{document}
 
