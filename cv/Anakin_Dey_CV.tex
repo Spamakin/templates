@@ -20,8 +20,9 @@
 % adjust the page margins
 \usepackage[margin=0.75in]{geometry}
 \setlength{\footskip}{149.60005pt}                 % depending on the amount of information in the footer, you need to change this value. comment this line out and set it to the size given in the warning
-%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+\setlength{\hintscolumnwidth}{2.375cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+%\setlength{\separatorcolumnwidth}{0.07\textwidth} % default is 0.025\textwidth; increase for a wider gap
 
 % font loading
 % for luatex and xetex, do not use inputenc and fontenc
@@ -46,6 +47,7 @@
 % More packages
 \usepackage{hyperref}
 \usepackage{soul}
+\usepackage{microtype}
 
 % Last edited
 \usepackage{footmisc} % Footnote support
@@ -59,7 +61,7 @@
 % personal data
 \name{Anakin}{Dey}
 \title{Curriculum Vit\ae}             % optional, remove / comment the line if not wanted
-\phone[mobile]{(331)~431~1220}        % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+% \phone[mobile]{(331)~431~1220}        % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
 \email{dey.92@osu.edu}         % optional, remove / comment the line if not wanted
 \homepage{www.anakin.phd}             % optional, remove / comment the line if not wanted
 
@@ -85,14 +87,14 @@
 Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computational Algebra
 
 \section{Education}
-\cventry{\emph{Fall 2024 -- Spring 2030}}{PhD Mathematics}{The Ohio State University}{}{}{
+\cventry{\emph{Autumn 2024 -- Spring 2030}}{PhD Mathematics}{The Ohio State University}{}{}{
   Advised by Dave Anderson and Zeyu Guo
 }
-\cventry{\emph{Fall 2020 -- Spring 2024}}{BSLAS Mathematics}{University of Illinois Urbana-Champaign}{}{}{
+\cventry{\emph{Autumn 2020 -- Spring 2024}}{BSLAS Mathematics}{University of Illinois Urbana-Champaign}{}{}{
   Minor in Computer Science \newline{}
   Graduation with Highest Distinction
   % GPA:\@ 3.92 / 4.00, Graduation with Highest Distinction \newline{}
-  % Deans List: Fall 2020, Fall 2021, Spring 2023, Fall 2023
+  % Deans List: Autumn 2020, Autumn 2021, Spring 2023, Autumn 2023
 }
 
 \section{Publications}
@@ -157,24 +159,24 @@ Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computationa
 
 \cventry{\emph{Spring 2024}}{Undergraduate Research Assistant}{\href{https://ayong.web.illinois.edu/ICLUE.html}{\color{lightblue}\ul{ICLUE}}}{}{}{Under Prof.\ Alexander Yong, University of Illinois Urbana-Champaign}
 \cventry{\emph{Summer 2023}}{Undergraduate Research Assistant}{\href{https://www.math.txst.edu/research-conferences/summerreu.html}{\color{lightblue}\ul{REU in Algebra, Combinatorics, and Statistics}}}{}{}{Under Prof.\ Yong Yang, Texas State University}{}
-\cventry{\emph{Fall 2021 -- Fall 2023}}{Undergraduate Research Assistant}{\href{https://mornik.web.illinois.edu/research/group/}{\color{lightblue}\ul{LEADCAT Lab}}}{}{}{Under Prof.\ Melkior Ornik, University of Illinois Urbana-Champaign}{}
+\cventry{\emph{Autumn 2021 -- Autumn~2023}}{Undergraduate Research Assistant}{\href{https://mornik.web.illinois.edu/research/group/}{\color{lightblue}\ul{LEADCAT Lab}}}{}{}{Under Prof.\ Melkior Ornik, University of Illinois Urbana-Champaign}{}
 
 \section{Student Organizations}
 
 \cventry{\emph{Spring 2026 -- Current}}{Graduate Representative}{OSU \href{https://math.osu.edu/cycle}{\color{lightblue}\ul{Cycle}}}{}{}{Ohio State University Cycle}
 \cventry{\emph{Spring 2025 -- Current}}{Vice President}{OSU \href{https://math.osu.edu/graduate/mgsa}{\color{lightblue}\ul{MGSA}}}{}{}{Ohio State University Math Graduate Student Association}
-\cventry{\emph{Fall 2022 -- Spring 202}4}{Founder and President}{ACM \href{https://www.cstheory.org/}{\color{lightblue}\ul{SIGma}}}{}{}{Special Interest Group in Math and Algorithms}
-\cventry{\emph{Fall 2021 -- Spring 202}4}{Admin}{ACM \href{https://sigpwny.com/}{\color{lightblue}\ul{SIGPwny}}}{}{}{Special Interest Group in Cybersecurity}
+\cventry{\emph{Autumn 2022 -- Spring 2024}}{Founder and President}{ACM \href{https://www.cstheory.org/}{\color{lightblue}\ul{SIGma}}}{}{}{Special Interest Group in Math and Algorithms}
+\cventry{\emph{Autumn 2021 -- Spring 2024}}{Admin}{ACM \href{https://sigpwny.com/}{\color{lightblue}\ul{SIGPwny}}}{}{}{Special Interest Group in Cybersecurity}
 
 \section{Teaching Experience}
 
-\cventry{\emph{Fall 2025 -- Current}}{Graduate Teaching Associate}{}{}{The Ohio State University}{
+\cventry{\emph{Autumn 2025 -- Current}}{Graduate Teaching Associate}{}{}{The Ohio State University}{
   \setlength{\tabcolsep}{24pt}
   \begin{itemize}
     \item Math 3345 -- Foundations of Higher Mathematics \newline{}
           (\emph{Spring 2026}, Grader)
     \item Math 1151 -- Calculus I \newline{}
-          (\emph{Fall 2025}, TA)
+          (\emph{Autumn 2025}, TA)
   \setlength\itemsep{10pt}
   \end{itemize}
 }
@@ -184,8 +186,8 @@ Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computationa
   \setlength\itemsep{10pt}
     \item CS 225H -- Honors Data Structures
           (\emph{Spring 2024})
-    \item CS 374 -- Introduction to Algorithms and Models of Computation
-          (\emph{Spring 2022 -- Fall 2022, Fall 2023})
+    \item CS 374 -- Introduction to Algorithms and Models of Computation \newline{}
+          (\emph{Spring 2022 -- Autumn 2022, Autumn 2023})
     \item CS 173 -- Discrete Structures
           (\emph{Spring 2021 -- Spring 2024})
     \item CS 475 -- Models of Computation
@@ -197,11 +199,11 @@ Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computationa
 
 \section{Mentoring}
 
-\cventry{\emph{Fall 2026 -- Current}}{Mentor}{}{}{OSU \href{https://math.osu.edu/cycle}{\color{lightblue}\ul{Cycle}}}{
+\cventry{\emph{Autumn 2026 -- Current}}{Mentor}{}{}{OSU \href{https://math.osu.edu/cycle}{\color{lightblue}\ul{Cycle}}}{
   \setlength{\tabcolsep}{24pt}
   \begin{itemize}
     \item How Hard is it to Compute Polynomials? \newline{}
-          (\emph{Fall 2026 -- Spring 2027}, 2 students)
+          (\emph{Autumn 2026 -- Spring 2027}, 2 students)
   \setlength\itemsep{10pt}
   \end{itemize}
 }
@@ -209,7 +211,7 @@ Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computationa
 \clearpage
 
 \section{Organization}
-\cventry{\emph{Fall 2026}}{STEM Puzzlehunt}{}{}{}{}
+\cventry{\emph{Autumn 2026}}{STEM Puzzlehunt}{}{}{}{}
 \cventry{\emph{Spring 2026}}{Cycle/MGSA/Spectra Puzzlehunt}{}{}{}{}
 \cventry{\emph{Spring 2026}}{5\textsuperscript{th} Annual OSU Cycle Conference}{}{}{}{}
 \cventry{\emph{Spring 2026}}{Commutative Algebra Reading Group}{}{}{}{}
@@ -217,11 +219,11 @@ Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computationa
 
 \section{Fellowships and Awards}
 
-\cventry{\emph{Fall 2026}}{David Goss Technology \& Academic Innovation Stimulus Fund}{}{}{}{
+\cventry{\emph{Autumn 2026}}{David Goss Technology \& Academic Innovation Stimulus Fund}{}{}{}{
   The Ohio State University Department of Mathematics
 }
 
-\cventry{\emph{Fall 2024 -- Spring 2025}}{University Fellowship}{}{}{}{
+\cventry{\emph{Autumn 2024 -- Spring 2025}}{University Fellowship}{}{}{}{
   The Ohio State University Graduate School
 }
 
@@ -239,11 +241,11 @@ Algebraic and Geometric Complexity Theory, Algebraic Combinatorics, Computationa
 
 \section{Service}
 
-\cventry{\emph{Fall 2026 -- Current}}{Steering Committee}{}{}{}{
-  \href{https://sites.google.com/view/combinatorics-online/home}{\color{lightblue}\ul{Combinatorics Online}}
+\cventry{\emph{Autumn 2026 -- Current}}{Steering Committee}{}{}{}{
+  \href{https://combinatorics.online/}{\color{lightblue}\ul{Combinatorics Online}}
 }
 
-\cventry{\emph{Fall 2026 -- Current}}{Graduate Student Representative}{}{}{}{
+\cventry{\emph{Autumn 2026 -- Current}}{Graduate Student Representative}{}{}{}{
   The Ohio State University Department of Mathematics Graduate Studies Committee
 }
 
