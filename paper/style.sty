@@ -1,0 +1,581 @@
+% =========================================================================
+% If you're going to do things, do it with style
+%
+% Various things stolen from https://jeffe.cs.illinois.edu/pubs/latex.html
+% Various more things stolen from I can't be bothered to write it all down
+% Some things modified, some things not
+% =========================================================================
+
+% -------------------------------------------------------------------------
+%  Fonts
+% -------------------------------------------------------------------------
+
+% I don't understand which one of these does what
+\usepackage[sc]{mathpazo}    % Palatino text and math
+\linespread{1.05}            % slightly more leading, recommended for Palatino
+\usepackage{amssymb}  
+\usepackage{bm}
+
+% \mathbb and the AMS symbols (mathpazo does not provide them)
+%\usepackage{inconsolata}    % \texttt font
+
+% Other font ideas to play with
+% https://mathweb.ucsd.edu/~msharpe/mathsamples.pdf
+% https://www.overleaf.com/blog/accessible-pdfs-with-latex
+
+% -------------------------------------------------------------------------
+%  Packages
+% -------------------------------------------------------------------------
+
+% ---- Lots of math stuff ----
+%\let\circledS\undefined                     % Use circledS from amssymb
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsthm}
+\usepackage[thmtools-compat]{keytheorems}
+% \usepackage{thmtools}
+% % --- Workaround for thmtools issue #75 (LaTeX 2026-06 kernel clash) ---
+% \makeatletter
+% \renewcommand\thmt@autorefsetup{%
+%   \@xa\def\csname\thmt@envname autorefname\@xa\endcsname\@xa{\thmt@thmname}%
+% }
+% \makeatother
+% % ----------------------------------------------------------------------
+\usepackage{stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % stmaryrd doesn't have bold
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{romannum}
+\AtBeginDocument{\pagenumbering{arabic}}
+
+% ---- Random math utilities ----
+\usepackage{centernot}
+\usepackage{braket}
+\usepackage{xfrac}
+\usepackage{optidef}
+% Symbols from TAOCP
+% ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/manfnt/manfnt.pdf
+\usepackage{manfnt}
+
+% ---- Formatting the page ----
+\usepackage[margin = 1in]{geometry}
+\usepackage[dvipsnames,cmyk]{xcolor}
+\usepackage{setspace}
+%I added the following. Otherwise, neighboring lines may overlap.
+\AtBeginDocument{%
+    \setlength{\lineskiplimit}{2pt}%
+    \setlength{\lineskip}{2pt}%
+}
+
+% ---- Formatting the title ----
+\usepackage{datetime2}
+
+% ---- Formatting the section titles ----
+\usepackage{titlesec}
+
+% ---- Formatting the text ----
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}                      % Do I notice a difference? Probably not
+\usepackage[indent]{parskip}
+
+% ---- Floats and whatnot ----
+\usepackage{float}
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+
+% ---- Item stuff ----
+\usepackage{enumitem}
+\usepackage{listofitems}
+\usepackage{etoolbox}
+
+% % Remove the footnote counter reset from \maketitle
+% \makeatletter
+% \patchcmd{\maketitle}{\setcounter{footnote}{0}}{}{}{}
+% \makeatother
+
+% % Load more symbols
+% \usepackage[symbol*]{footmisc}
+
+% % Use symbols for footnotes throughout the document
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+% ---- Standing on the shoulders of giants ----
+\usepackage[breaklinks]{hyperref}
+\colorlet{linkblue}{blue!80!green}   % darker: blue!45!black, brighter: blue!75!black
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    citecolor=linkblue,
+    filecolor=linkblue,
+    urlcolor=linkblue,
+}
+\usepackage{zref-clever}
+\zcsetup{cap,abbrev}
+\newcommand{\cref}[1]{\zcref{#1}}
+\newcommand{\Cref}[1]{\zcref[S]{#1}}
+\newcommand{\cpageref}[1]{\zcpageref{#1}}
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    maxbibnames=99,
+    useprefix=true,
+    sortcites=true
+]{biblatex}
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=doi,final]
+      \step[fieldset=url,null]
+      \step[fieldset=urldate,null]
+    }
+  }
+}
+% We want to label paragraphs
+\zcRefTypeSetup{paragraph}{
+  name-sg = {paragraph},
+  Name-sg = {Paragraph},
+  name-pl = {paragraphs},
+  Name-pl = {Paragraphs},
+}
+
+% -------------------------------------------------------------------------
+%  Formatting junk
+% -------------------------------------------------------------------------
+
+% \setstretch{1.1}                                    % More line spacing
+% \pdfstringdefDisableCommands{\let\boldmath\relax}   % allow \boldmath in section titles
+
+% datetime setup
+\DTMsetup{datesep=/}
+\DTMsetdatestyle{mdyy}
+
+% ---- SECTION FORMATTING ----
+% TODO: Fix numbered versions
+
+\titlespacing{\section}
+    {0pt}                           % left
+    {\parskip}                      % before
+    {\parskip}                           % after
+
+\titlespacing*{\subsection}
+    {0pt}
+    {3.25ex plus 1ex minus .2ex}
+    {1.5ex plus .2ex}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\boldmath}
+    {\thesection}{1ex}{}
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\boldmath}
+    {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}[hang]
+    {\normalfont\normalsize\bfseries\boldmath}
+    {\thesubsubsection}{1em}{}
+    
+\titlespacing*{\subsubsection}{0pt}{2.5ex plus 1ex minus .2ex}{1ex plus .2ex}
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries\boldmath}{\theparagraph}{1em}{}[.]
+
+
+% ---- THEOREM & LEMMA ENVIRONMENTS ----
+% TODO: unnumbered versions
+
+\declaretheoremstyle[
+    spaceabove=\topsep,
+    spacebelow=\topsep,
+    headindent=0pt,
+    headfont=\bfseries,
+    postheadhook = {\hspace*{\parindent}},
+    postheadspace=0pt plus 1pt minus 1pt,
+    headpunct=:,
+    notefont=\bfseries\boldmath,
+    bodyfont=\normalfont
+]{theorem}
+
+\declaretheorem[style=theorem, numberwithin=section, name=Definition]{defn}
+\declaretheorem[style=theorem, numberlike=defn, name=Example]{ex}
+\declaretheorem[style=theorem, numberlike=defn, name=Theorem]{thrm}
+\zcRefTypeSetup{thrm}{
+  name-sg = {theorem},
+  Name-sg = {Theorem},
+  name-pl = {theorems},
+  Name-pl = {Theorems},
+}
+\declaretheorem[style=theorem, numberlike=defn, name=Proposition]{prop}
+\declaretheorem[style=theorem, numberlike=defn, name=Lemma]{lem}
+\declaretheorem[style=theorem, numberlike=defn, name=Claim]{claim}
+\declaretheorem[style=theorem, numberlike=defn, name=Corollary]{cor}
+\declaretheorem[style=theorem, numberlike=defn, name=Conjecture]{conj}
+\declaretheorem[style=theorem, numberlike=defn, name=Question]{question}
+\declaretheorem[style=theorem, numberlike=defn, name=Remark, qed={\lower-0.3ex\hbox{$\vartriangleleft$}}]{remark}
+
+
+\declaretheoremstyle[
+    spaceabove=\topsep,
+    spacebelow=12pt,
+    headindent=0pt,
+    headfont=\bfseries,
+    postheadhook = {\hspace*{\parindent}},
+    postheadspace=0pt plus 1pt minus 1pt,
+    headpunct=:,
+    notefont=\bfseries,
+    bodyfont=\normalfont,
+    qed=\qedsymbol,
+]{solution}
+\declaretheorem[style=solution, numbered=no, name=Proof]{pf}
+
+% Proof of ...
+\declaretheoremstyle[
+    spaceabove=\topsep,
+    spacebelow=12pt,
+    headindent=0pt,
+    headfont=\bfseries,
+    postheadhook = {\hspace*{\parindent}},
+    postheadspace=0pt plus 1pt minus 1pt,
+    headpunct=:,
+    notefont=\bfseries,
+    bodyfont=\normalfont,
+    qed=\qedsymbol,
+    notebraces={}{},
+]{solution}
+\declaretheorem[style=solution, numbered=no, name={Proof of}]{pfof}
+
+% change footnote style to symbols instead of numbers
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+% -------------------------------------------------------------------------
+%  Common abbreviations and words with accents
+% -------------------------------------------------------------------------
+
+% ---- LATIN ----
+\newcommand*\etal{et~al.}
+\newcommand*\ie{i.e.}
+\newcommand*\cf{cf.}
+\newcommand*\eg{e.g.}
+\newcommand*\vitae{vit\ae{}}
+\newcommand*\apriori{a~priori}
+\newcommand*\Apriori{A~priori}
+\newcommand*\aposteriori{a~posteriori}  % I did not know this was a thing
+\newcommand*\Aposteriori{A~posteriori}
+
+% ---- PROPER NAMES (because I'm lazy) ----
+\newcommand*\Burgisser{B\"urgisser}
+\newcommand*\Grobner{Gr\"obner}
+\newcommand*\Bezout{B\'ezout}
+
+% -------------------------------------------------------------------------
+%  Math operators and symbols
+% -------------------------------------------------------------------------
+
+% ---- Paper Specific ----
+\DeclareMathOperator{\IP}{IP}
+\DeclareMathOperator{\trun}{trun}
+\DeclareMathOperator{\dlog}{dlog}
+\DeclareMathOperator{\DEG}{DEG}
+\renewcommand{\vec}[1]{\ifcat\noexpand#1a\mathbf{#1}\else\bm{#1}\fi}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\TrIMM}{Tr-IMM}
+
+% ---- Misc Functions ----
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\1}{\mathbb{1}}
+
+% ---- Matrices ----
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GF}{GF}
+\DeclareMathOperator{\IMM}{IMM}
+\DeclareMathOperator{\perm}{perm}
+
+% ---- Functors ----
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Emb}{Emb}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Mult}{Mult}
+
+% ---- Polynomials ----
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\mdeg}{multideg}
+\DeclareMathOperator{\characteristic}{char}
+\DeclareMathOperator{\coeff}{coeff}
+\DeclareMathOperator{\lc}{\textsc{lc}}
+\DeclareMathOperator{\lm}{\textsc{lm}}
+\DeclareMathOperator{\lt}{\textsc{lt}}
+\DeclareMathOperator{\tc}{\textsc{tc}}
+\DeclareMathOperator{\tm}{\textsc{tm}}
+\DeclareMathOperator{\tterm}{\textsc{tt}}
+\DeclareMathOperator{\I}{\mathbf{I}}
+\DeclareMathOperator{\V}{\mathbf{V}}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\J}{\mathbf{J}}
+\DeclareMathOperator{\Jac}{Jac}
+
+% ---- Analysis / Topology ----
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\inte}{int}
+\DeclareMathOperator{\bdry}{bdry}
+\DeclareMathOperator{\diam}{diam}
+
+% ---- Algebra ----
+\DeclareMathOperator{\rad}{rad}
+%\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\height}{ht}
+\DeclareMathOperator{\trdeg}{tr.deg}
+\DeclareMathOperator{\HilbF}{HilbF}
+\DeclareMathOperator{\HilbP}{HilbP}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\length}{length}
+
+\newcommand*\argmax{\operatornamewithlimits{arg\,max}}
+\newcommand*\argmin{\operatornamewithlimits{arg\,min}}
+
+% --- Cheap displaystyle operators ---
+\newcommand*\Frac[2]{{\dfrac{#1}{#2}}}
+\newcommand*\Sfrac[2]{{\displaystyle\sfrac{#1}{#2}}}
+\newcommand*\Sum{\sum\limits}
+\newcommand*\Prod{\prod\limits}
+\newcommand*\Bigcup{\bigcup\limits}
+\newcommand*\Bigcap{\bigcap\limits}
+\newcommand*\Bigvee{\bigvee\limits}
+\newcommand*\Bigwedge{\bigwedge\limits}
+\newcommand*\Bigtimes{\bigtimes\limits}
+
+\makeatletter
+\newcommand{\bigplus}{%
+  \DOTSB\mathop{\mathpalette\mattos@bigplus\relax}\slimits@
+}
+\newcommand\mattos@bigplus[2]{%
+  \vcenter{\hbox{%
+    \sbox\z@{$#1\sum$}%
+    \resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}{$\m@th#1+$}}%
+  }}%
+  \vphantom{\sum}%
+}
+\makeatother
+\newcommand*\Bigplus{\bigplus\limits}
+
+\newcommand*\Int{\int\limits}
+\newcommand*\Lim{\lim\limits}
+\newcommand*\Max{\max\limits}
+\newcommand*\Min{\min\limits}
+\newcommand*\Argmax{\argmax\limits}
+\newcommand*\Argmin{\argmin\limits}
+\newcommand*\Sup{\sup\limits}
+\newcommand*\Inf{\inf\limits}
+\newcommand*\Limsup{\limsup\limits}
+\newcommand*\Liminf{\liminf\limits}
+
+% ---- Sets ----
+\newcommand*\N{\mathbb{N}}
+\newcommand*\Z{\mathbb{Z}}
+\newcommand*\Q{\mathbb{Q}}
+\newcommand*\R{\mathbb{R}}
+\newcommand*\C{\mathbb{C}}
+\newcommand*\F{\mathbb{F}}
+\newcommand*\E{\mathbb{E}}
+\newcommand*\K{\mathbb{K}}
+\newcommand*\A{\mathbb{A}}
+\newcommand*\PP{\mathbb{P}}
+\renewcommand*\P{\mathbb{P}}
+
+% ---- Symbols ----
+\newcommand*\e{\varepsilon}
+\newcommand*\true{\textsc{True}}
+\newcommand*\false{\textsc{False}}
+
+% ---- RELATORS & ARROWS ----
+\newcommand*\defeq{\coloneqq}
+\newcommand*\into{\DOTSB\hookrightarrow}
+\newcommand*\onto{\DOTSB\twoheadrightarrow}
+\newcommand*\inonto{\DOTSB\lhook\joinrel\twoheadrightarrow}
+\newcommand\isoto{\stackrel{\sim}{\smash{\longrightarrow}\rule{0pt}{0.4ex}}}
+\newcommand*\from{\leftarrow}
+\newcommand*\tofrom{\leftrightarrow}
+\newcommand*\fromto{\tofrom}                                % This is mostly for my own amusement
+\newcommand*\sample{\overset{\$}{\from}}
+\newcommand*\notimplies{\centernot\implies}
+\newcommand*\acts{\curvearrowright}
+\newcommand*\normal{\trianglelefteq}
+\newcommand*\pluseq{\mathrel{+}=}
+\newcommand*\timeseq{\mathrel{*}=}
+\newcommand*\minuseq{\mathrel{-}=}
+\newcommand*\diveq{\mathrel{/}=}
+\newcommand*\child{\downarrow}
+\newcommand*\ancestor{\Uparrow}
+\newcommand*\contains{\supset}
+\newcommand*\containseq{\supseteq}
+\newcommand*\containsneq{\supsetneq}
+
+% -------------------------------------------------------------------------
+% Enclosures
+% -------------------------------------------------------------------------
+
+% ---- FUNCTIONS ----
+\newcommand*\floor[1]{%
+    \left\lfloor #1 \right\rfloor
+}
+
+\newcommand*\ceil[1]{%
+    \left\lceil #1 \right\rceil
+  }
+
+% pmod that scales for exponents
+\renewcommand{\pmod}[1]{~\pqty{\text{mod~}{#1}}}
+
+% ---- COMPLEXITY MACROS ----
+\newcommand*\bigO[1]{%                       % Constants no longer matter
+    O\kern-0.0pt\left(#1\right)
+}
+
+\newcommand*\littleo[1]{%
+    o\kern-0.0pt\left(#1\right)
+}
+
+\newcommand*\bigTheta[1]{%
+    \Theta\kern-0.0pt\left(#1\right)
+}
+
+\newcommand*\bigOmega[1]{%
+    \Omega\kern-0.0pt\left(#1\right)
+}
+
+% ---- PROBABILITY ----
+% I like \mathbb{P} for probability but go nuts, you can renew this
+\DeclareMathOperator{\probname}{\mathbb{P}}
+\DeclareMathOperator{\evname}{\mathbb{E}}
+
+% Probability and Expectation with ability for conditioning
+% Try \Prob{x | y} versus \Prob{x} and \EV{x | y} versus \EV{x}
+% Also for encodings / presentations
+% Source code stolen from braket.sty
+% TODO: cut down on code duplication
+{\catcode`\|=\active
+  \xdef\Prob{\protect\expandafter\noexpand\csname Prob \endcsname}
+  \expandafter\gdef\csname Prob \endcsname#1{\probname\kern-1pt\left[%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \,{\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\,\right]}
+}
+
+{\catcode`\|=\active
+  \xdef\EV{\protect\expandafter\noexpand\csname EV \endcsname}
+  \expandafter\gdef\csname EV \endcsname#1{\evname\kern-1pt\left[%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \,{\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\,\right]}
+}
+
+% Turing Machines only take strings, we should fix that eventually
+{\catcode`\|=\active
+  \xdef\encode{\protect\expandafter\noexpand\csname encode \endcsname}
+  \expandafter\gdef\csname encode \endcsname#1{\left\langle%
+     \ifx\SavedDoubleVert\relax \let\SavedDoubleVert\|\fi
+     \,{\let\|\SetDoubleVert
+     \mathcode`\|32768\let|\SetVert
+     #1}\,\right\rangle}
+}
+
+% ---- ALGEBRA ----
+
+% We use the same notation for finitely generated groups
+\newcommand*{\gen}{\encode}
+% And for ideals
+\newcommand*{\ideal}{\encode}
+% And for inner products
+\newcommand*{\inner}{\encode}
+
+% magic for cycle notation
+% https://tex.stackexchange.com/questions/135868/permutation-cycle-notation
+% Can take optional replacement for ~ such as \cycle[\;]{1, 2, 3}
+\newcommand*\cycle[2][~]{%
+  \readlist\thecycle{#2}%
+  \left(\foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i}\right)%
+}
+
+
+% -------------------------------------------------------------------------
+% misc + various utilities + organize later
+% -------------------------------------------------------------------------
+
+% You get confused often
+\newcommand\quest[1]{ {\boldmath \color{BrickRed} $\langle \langle$ \textbf{#1} $\rangle \rangle$} }
+
+% From https://texblog.net/latex-archive/maths/amsmath-matrix/
+% Some optional column arguments à la \array for matrices
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% From https://twitter.com/sarielhp/status/1659661458739806213
+\DeclareCiteCommand{\tcite}%
+ {\usebibmacro{prenote}}%
+ {\usebibmacro{citeindex}%
+    \usebibmacro{cite}}%
+ {\multicitedelim}%
+ {\usebibmacro{postnote}%
+}
+
+% From https://github.com/dalcde/cam-notes/blob/master/header.tex
+\newcommand\fakeqed{\pushQED{\qed}\qedhere}
+
+% From https://tex.stackexchange.com/questions/573850/how-to-create-a-new-math-operator
+\makeatletter
+\DeclareRobustCommand\bigop[2][1]{%
+  \mathop{\vphantom{\sum}\mathpalette\bigop@{{#2}{#1}}}\slimits@
+}
+\newcommand{\bigop@}[2]{\bigop@@#1#2}
+\newcommand{\bigop@@}[3]{%
+  \vcenter{%
+    \sbox\z@{$#1\sum$}%
+    \hbox{\resizebox{#3\dimexpr\ifx#1\displaystyle.9\fi\dimexpr\ht\z@+\dp\z@}{!}{$\m@th#2$}}%
+  }%
+}
+\makeatother
+\newcommand{\bigcomma}{\DOTSB\bigop[1.0]{,}}
+
+% Lowercase mathcal \mathcalb
+% From https://sarielhp.org/blog/2022/01/11/mathcal-for-small-letters/
+\DeclareFontFamily{U}{BOONDOX-calo}{\skewchar\font=45 }
+\DeclareFontShape{U}{BOONDOX-calo}{m}{n}{
+  <-> s*[1.05] BOONDOX-r-calo}{}
+\DeclareFontShape{U}{BOONDOX-calo}{b}{n}{
+  <-> s*[1.05] BOONDOX-b-calo}{}
+\DeclareMathAlphabet{\mathcalb}{U}{BOONDOX-calo}{m}{n}
+\SetMathAlphabet{\mathcalb}{bold}{U}{BOONDOX-calo}{b}{n}
+\DeclareMathAlphabet{\mathbcalb}{U}{BOONDOX-calo}{b}{n}
+
+
+%\usepackage[normalem]{ulem}
