@@ -11,13 +11,20 @@
 % -------------------------------------------------------------------------
 
 % I don't understand which one of these does what
-\usepackage[sc]{mathpazo}    % Palatino text and math
-\linespread{1.05}            % slightly more leading, recommended for Palatino
-\usepackage{amssymb}  
-\usepackage{bm}
+\usepackage[charter, cal=cmcal]{mathdesign}     % Math fonts for charter
+                                                % FIXME: get rid of these warnings
+\usepackage[
+%scaled=.96,
+sups]{XCharter}         % I think this is the main font
+\usepackage{sourcesanspro}                      % Not sure what this does
+\usepackage{inconsolata}                        % \texttt font
 
-% \mathbb and the AMS symbols (mathpazo does not provide them)
-%\usepackage{inconsolata}    % \texttt font
+% mathdesign charter prod / coprod are far too wide. This fixes it
+\let\prod=\undefined
+\let\coprod=\undefined
+\DeclareSymbolFont{cmlargesymbols}{OMX}{cmex}{m}{n}
+\DeclareMathSymbol{\prod}{\mathop}{cmlargesymbols}{"51}
+\DeclareMathSymbol{\coprod}{\mathop}{cmlargesymbols}{"60}
 
 % Other font ideas to play with
 % https://mathweb.ucsd.edu/~msharpe/mathsamples.pdf
